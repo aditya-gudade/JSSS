@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Area Calculation</title>
+    <script>
+        function calculateCircleArea() {
+            var radius = parseFloat(document.getElementById("circle-radius").value);
+            var result = document.getElementById("circle-result");
+
+            if (isNaN(radius) || radius <= 0) {
+                result.innerHTML = "Please enter a positive number for the radius.";
+            } else {
+                var area = Math.PI * radius * radius;
+                result.innerHTML = "Area of Circle: " + area.toFixed(2);
+            }
+        }
+
+        function calculateRectangleArea() {
+            var width = parseFloat(document.getElementById("rectangle-width").value);
+            var height = parseFloat(document.getElementById("rectangle-height").value);
+            var result = document.getElementById("rectangle-result");
+
+            if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+                result.innerHTML = "Please enter positive numbers for width and height.";
+            } else {
+                var area = width * height;
+                result.innerHTML = "Area of Rectangle: " + area.toFixed(2);
+            }
+        }
+
+        function calculateTriangleArea() {
+           var sideA = parseFloat(document.getElementById("triangle-sideA").value);
+            var sideB = parseFloat(document.getElementById("triangle-sideB").value);
+            var sideC = parseFloat(document.getElementById("triangle-sideC").value);
+            var result = document.getElementById("triangle-result");
+
+            if (isNaN(sideA)	 || isNaN(sideB) || isNaN(sideC) || sideA <= 0 || sideB <= 0 || sideC <= 0) {
+                result.innerHTML = "Please enter positive numbers for all sides of the triangle.";
+            } else if (sideA + sideB <= sideC || sideA + sideC <= sideB || sideB + sideC <= sideA) {
+                result.innerHTML = "Invalid triangle: The sum of any two sides should be greater than the third side.";
+            } else {
+                var semiPerimeter = (sideA + sideB + sideC) / 2;
+                var area = Math.sqrt(semiPerimeter * (semiPerimeter - sideA) * (semiPerimeter - sideB) * (semiPerimeter - sideC));
+                result.innerHTML = "Area of Triangle: " + area.toFixed(2);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Area Calculation</h1>
+    
+    <div id="circle-inputs">
+        <h2>Circle</h2>
+        <label for="circle-radius">Enter circle radius:</label>
+        <input type="number" id="circle-radius">
+        <button onclick="calculateCircleArea()">Calculate Area</button>
+        <div id="circle-result"></div>
+        <br><br>
+    </div>
+
+    <div id="rectangle-inputs">
+        <h2>Rectangle</h2>
+        <label for="rectangle-width">Enter rectangle width:</label>
+        <input type="number" id="rectangle-width">
+        <br><br>
+        <label for="rectangle-height">Enter rectangle height:</label>
+        <input type="number" id="rectangle-height">
+        <button onclick="calculateRectangleArea()">Calculate Area</button>
+        <div id="rectangle-result"></div>
+        <br><br>
+    </div>
+
+    <div id="triangle-inputs">
+        <h2>Triangle</h2>
+        <label for="triangle-sideA">Enter side A:</label>
+        <input type="number" id="triangle-sideA">
+        <br><br>
+        <label for="triangle-sideB">Enter side B:</label>
+        <input type="number" id="triangle-sideB">
+        <br><br>
+        <label for="triangle-sideC">Enter side C:</label>
+        <input type="number" id="triangle-sideC">
+        <button onclick="calculateTriangleArea()">Calculate Area</button>
+        <div id="triangle-result"></div>
+        <br><br>
+    </div>
+
+</body>
+</html>
